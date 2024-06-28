@@ -13,9 +13,35 @@ canvas{
     max-width: 50%;
 }
 .txt-tile{
-    margin-bottom: 2%;
+    margin-bottom: 20px;
+}
+.txt-tile h1{
+    margin-top: 0;
+}
+#mensajeAlerta{
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 10px;
+    resize: vertical;
 }
 
 .datos{
-    margin-bottom: 2%;
+    /* margin-bottom: 2%; */
+    margin-bottom: 20px;
 }
+button{
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+button:hover{
+    background-color: #0056b3;
+}
+
+

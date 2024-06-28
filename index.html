@@ -12,18 +12,19 @@
     
    <div class="txt-tile">
     <h1>Mi Gráfica con Chart.js</h1>
-        <input type="text" title="Ingresar un valor">
+    
+    <textarea class="alerta" id="mensajeAlerta" rows="3" placeholder="Mensaje de Alerta"></textarea>
        
 </div>
 <div class="datos">
-    <label for="edad">edad</label>
-    <input type="text" id="edad" >
-    <label for="peso">peso(kg)</label>
-    <input type="text" id="peso">
-    <label for="talla">talla (m)</label>
-    <input type="text" id="talla">
+    <label for="edad">Edad</label>
+    <input type="text" id="edad" placeholder="Ingresar la edad" >
+    <label for="peso">Peso(kg)</label>
+    <input type="text" id="peso" placeholder="Ingresar el peso en kg">
+    <label for="talla">Talla (m)</label>
+    <input type="text" id="talla" placeholder="Ingresar la talla en metros">
     <label for="hemog">Hemoglobina</label>
-    <input type="text" id="hemog">
+    <input type="text" id="hemog" placeholder="ingresar los niveles de emoglobina">
 </div>
 <div>
     <button onclick="calcularIMC()">calcularIMC</button>
@@ -33,9 +34,7 @@
 
     <!-- Script para configurar y mostrar la gráfica -->
 
-    <script src="prueba.js">
-       
-    </script>
+    <script src="prueba.js"></script>
     
 </body>
 </html>

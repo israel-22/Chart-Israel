@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gráfica con Chart.js</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+   <div class="txt-tile">
+       <h1>Mi Gráfica con Chart.js</h1>
+       <textarea class="alerta" id="mensajeAlerta" rows="3" placeholder="Mensaje de Alerta"></textarea>
+   </div>
+   <div class="datos">
+    
+       <label for="edad">Edad</label>
+       <input type="text" id="edad" placeholder="Ingresar la edad">
+       <label for="peso">Peso (kg)</label>
+       <input type="text" id="peso" placeholder="Ingresar el peso en kg">
+       <label for="talla">Talla (m)</label>
+       <input type="text" id="talla" placeholder="Ingresar la talla en metros">
+       <label for="hemog">Hemoglobina</label>
+       <input type="text" id="hemog" placeholder="Ingresar los niveles de hemoglobina">
+   </div>
+   
+   <div>
+       <button onclick="calcularIMC()">Calcular IMC</button>
+   </div>
+   <canvas id="graficaPercentil" width="600" height="200"></canvas>
+   <script src="prueba.js"></script>
+
+</body>
+</html>

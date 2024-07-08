@@ -12,24 +12,42 @@
     
     <div class="txt-tile">
         <h1>Mi Gráfica con Chart.js</h1>
-        <textarea class="alerta" id="mensajeAlerta" rows="3" placeholder="Mensaje de Alerta"></textarea>
+        <textarea class="alerta" id="IMC" rows="10" placeholder="Mensaje de Alerta"></textarea>
     </div>
     <div class="datos">
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula">
+        
+        <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha-nacimiento" onchange="calcularEdad()">
+        
         <label for="edad">Edad</label>
-        <input type="text" id="edad" placeholder="Ingresar la edad">
+        <input type="text" id="edad" placeholder="Edad" readonly>
+        
+        <label for="meses">Meses</label>
+        <input type="text" id="meses" placeholder="Meses" readonly>
+        
         <label for="peso">Peso (kg)</label>
         <input type="text" id="peso" placeholder="Ingresar el peso en kg">
+        
         <label for="talla">Talla (m)</label>
         <input type="text" id="talla" placeholder="Ingresar la talla en metros">
+        
         <label for="hemog">Hemoglobina</label>
         <input type="text" id="hemog" placeholder="Ingresar los niveles de hemoglobina">
+        
+        <!-- <label for="imc">IMC:</label>
+        <input type="text" id="imc" placeholder="IMC" readonly> -->
     </div>
     <div>
         <button onclick="calcularIMC()">Calcular IMC</button>
+       
     </div>
+    
     <!-- Canvas para la gráfica -->
+     
     <canvas id="graficaPercentil" width="600" height="200"></canvas>
-
+    
     <!-- Script para configurar y mostrar la gráfica -->
     <script src="prueba.js"></script>
     

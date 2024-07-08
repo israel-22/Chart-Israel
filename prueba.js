@@ -1,4 +1,4 @@
-// Función para calcular el IMC y mostrar mensaje dentro del div
+// Función para calcular el IMC y mostrar mensaje dentro del textarea
 function calcularIMC() {
     // Obtener los valores de peso y talla
     let peso = parseFloat(document.getElementById('peso').value);
@@ -13,18 +13,17 @@ function calcularIMC() {
     // Calcular el IMC
     let imc = peso / (talla * talla);
     imc = imc.toFixed(2); // Redondear el IMC a dos decimales
-    let mensaje = '';
 
     // Determinar el mensaje según el IMC calculado
-  
-    if(imc<18.5){
-        alert('Tu IMC muestra'+imc+',indices de bajo peso y desnutricion');
-    }else if(imc>=18.5 && imc <25){
-        alert('Tu IMC muestra'+imc+',indices de peso de rango saludable');
-    } else if(imc>=25 && imc<30){
-        alert('Tu IMC muestra'+imc+',indices de sobrepeso fuera del rango saludable');
-    }else{
-        alert('Tu IMC muestra'+imc+',indices de sobrepeso y obesidad');
+    let mensaje = '';
+    if (imc < 18.5) {
+        mensaje = `Tu IMC es ${imc}, indica bajo peso y desnutrición.`;
+    } else if (imc >= 18.5 && imc < 25) {
+        mensaje = `Tu IMC es ${imc}, indica un peso de rango saludable.`;
+    } else if (imc >= 25 && imc < 30) {
+        mensaje = `Tu IMC es ${imc}, indica sobrepeso fuera del rango saludable.`;
+    } else {
+        mensaje = `Tu IMC es ${imc}, indica sobrepeso y obesidad.`;
     }
 
     // Mostrar el mensaje en el elemento HTML

@@ -54,28 +54,27 @@ function calcularIMC() {
     document.getElementById('IMC').value = mensaje;
 
     // Actualizar la gráfica
-    actualizarGrafica(peso, talla, imc, hemoglobina);
+    actualizarGrafica(peso, talla, hemoglobina, imc);
 }
 
 // Función para actualizar la gráfica con el IMC calculado
-function actualizarGrafica(peso, talla, imc, hemoglobina) {
+function actualizarGrafica(peso, talla, hemoglobina, imc) {
     let ctx = document.getElementById('graficaPercentil').getContext('2d');
 
     // Ejemplo de datos quemados para Percentil
     let Percentiles = {
-        peso: [2.5, 5, 10, 25, 50, 75, 90, 95, 97.5],
-        edadMeses: [1, 3, 6, 9, 12, 18, 24, 30, 36],
-        hemoglobina: 10.5,
-        anemia: 11.0,
-        obesidad: 30
+        peso: [2.5, 5, 10, 25, 50, 75, 90, 95, 97.5, 98, 99, 100, 105, 115, 120],
+        hemoglobina: Array(15).fill(hemoglobina),
+        anemia: Array(15).fill(11.0),
+        obesidad: Array(15).fill(30)
     };
 
     // Definir los datos para la gráfica
     let data = {
-        labels: Percentiles.edadMeses.map(mes => `${mes} Meses`), // Etiqueta para cada conjunto de datos
+        labels: [...Array(15).keys()].map(mes => `${mes} Meses`), // Etiqueta para cada conjunto de datos
         datasets: [
             {
-                label: 'Percentil Peso',
+                label: 'Peso',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 data: Percentiles.peso,
@@ -85,22 +84,22 @@ function actualizarGrafica(peso, talla, imc, hemoglobina) {
                 label: 'Hemoglobina',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                data: Array(Percentiles.edadMeses.length).fill(Percentiles.hemoglobina),
+                data: Percentiles.hemoglobina,
                 yAxisID: 'yHemoglobina'
             },
             {
                 label: 'Anemia',
                 borderColor: 'rgba(255, 206, 86, 1)',
                 backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                data: Array(Percentiles.edadMeses.length).fill(Percentiles.anemia),
+                data: Percentiles.anemia,
                 yAxisID: 'yHemoglobina'
             },
             {
                 label: 'Obesidad',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                data: Array(Percentiles.edadMeses.length).fill(Percentiles.obesidad),
-                yAxisID: 'yObesidad'
+                data: Percentiles.obesidad,
+                yAxisID: 'yPeso'
             }
         ]
     };
@@ -127,18 +126,7 @@ function actualizarGrafica(peso, talla, imc, hemoglobina) {
                 position: 'right',
                 title: {
                     display: true,
-                    text: 'Hemoglobina'
-                },
-                grid: {
-                    drawOnChartArea: false
-                }
-            },
-            yObesidad: {
-                type: 'linear',
-                position: 'right',
-                title: {
-                    display: true,
-                    text: 'IMC'
+                    text: 'Hemoglobina (g/dL)'
                 },
                 grid: {
                     drawOnChartArea: false

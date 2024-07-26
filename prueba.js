@@ -78,28 +78,40 @@ function actualizarGrafica(peso, talla, hemoglobina, imc) {
                 borderColor: 'rgba(255, 99, 132, 1)',
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 data: Percentiles.peso,
-                yAxisID: 'yPeso'
+                yAxisID: 'yPeso',
+                tension: 0.4,
+                showLine: true,
+                fill: false
             },
             {
                 label: 'Hemoglobina',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
                 data: Percentiles.hemoglobina,
-                yAxisID: 'yHemoglobina'
+                yAxisID: 'yHemoglobina',
+                tension: 0.4,
+                showLine: true,
+                fill: false
             },
             {
                 label: 'Anemia',
                 borderColor: 'rgba(255, 206, 86, 1)',
                 backgroundColor: 'rgba(255, 206, 86, 0.2)',
                 data: Percentiles.anemia,
-                yAxisID: 'yHemoglobina'
+                yAxisID: 'yHemoglobina',
+                tension: 0.4,
+                showLine: true,
+                fill: false
             },
             {
                 label: 'Obesidad',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 data: Percentiles.obesidad,
-                yAxisID: 'yPeso'
+                yAxisID: 'yPeso',
+                tension: 0.4,
+                showLine: true,
+                fill: false
             }
         ]
     };
@@ -131,6 +143,14 @@ function actualizarGrafica(peso, talla, hemoglobina, imc) {
                 grid: {
                     drawOnChartArea: false
                 }
+            }
+        },
+        elements: {
+            point: {
+                radius: 5 // Mostrar los puntos
+            },
+            Number:{
+                radius: 5
             }
         }
     };

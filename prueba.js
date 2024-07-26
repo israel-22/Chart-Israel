@@ -61,45 +61,100 @@ function calcularIMC() {
 function actualizarGrafica(peso, talla, hemoglobina, imc) {
     let ctx = document.getElementById('graficaPercentil').getContext('2d');
 
-    // Ejemplo de datos quemados para Percentil
-    let Percentiles = {
-        peso: [2.5, 5, 10, 25, 50, 75, 90, 95, 97.5, 98, 99, 100, 105, 115, 120],
-        hemoglobina: Array(15).fill(hemoglobina),
-        anemia: Array(15).fill(11.0),
-        obesidad: Array(15).fill(30)
+    // Generar datos de percentil simulados
+    let edadMeses = [...Array(61).keys()].map(mes => mes - 30); // Edad de -30 a 30 meses
+    let percentilData = {
+        '-3 SD':edadMeses.map(mes => calculatePercentil(mes, -3)),
+        '-2 SD': edadMeses.map(mes => calculatePercentil(mes, -2)),
+        '-1 SD': edadMeses.map(mes => calculatePercentil(mes, -1)),
+        '0 SD': edadMeses.map(mes => calculatePercentil(mes, 0)),
+        '1 SD': edadMeses.map(mes => calculatePercentil(mes, 1)),
+        '2 SD': edadMeses.map(mes => calculatePercentil(mes, 2)),
+        '3 SD': edadMeses.map(mes => calculatePercentil(mes, 3)),
+        'IMC': edadMeses.map(mes => imc) // Usar IMC calculado
     };
+
+    // Función simulada para calcular el percentil, puedes ajustar según tu necesidad
+    function calculatePercentil(mes, sd) {
+        // Ajusta esta fórmula según tus datos y necesidades
+        return sd + (Math.sin(mes / 10) * 2); 
+    }
 
     // Definir los datos para la gráfica
     let data = {
-        labels: [...Array(15).keys()].map(mes => `${mes} Meses`), // Etiqueta para cada conjunto de datos
+        labels: edadMeses, // Edad en meses
         datasets: [
             {
-                label: 'Peso',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                data: Percentiles.peso,
-                yAxisID: 'yPeso'
+                label: '-3 SD',
+                borderColor: 'black',
+                borderWidth: 1,
+                data: percentilData['-3 SD'],
+                tension: 0.2,
+                fill: false,
+                pointRadius: 0 // Eliminar puntos
             },
             {
-                label: 'Hemoglobina',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                data: Percentiles.hemoglobina,
-                yAxisID: 'yHemoglobina'
+                label: '-2 SD',
+                borderColor: 'red',
+                borderWidth: 1,
+                data: percentilData['-2 SD'],
+                tension: 0.2,
+                fill: false,
+                pointRadius: 0 // Eliminar puntos
             },
             {
-                label: 'Anemia',
-                borderColor: 'rgba(255, 206, 86, 1)',
-                backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                data: Percentiles.anemia,
-                yAxisID: 'yHemoglobina'
+                label: '-1 SD',
+                borderColor: 'orange',
+                borderWidth: 1,
+                data: percentilData['-1 SD'],
+                tension: 0.2,
+                fill: false,
+                pointRadius: 0 // Eliminar puntos
             },
             {
-                label: 'Obesidad',
+                label: '0 SD',
+                borderColor: 'green',
+                borderWidth: 1,
+                data: percentilData['0 SD'],
+                tension: 0.2,
+                fill: false,
+                pointRadius: 0 // Eliminar puntos
+            },
+            {
+                label: '1 SD',
+                borderColor: 'orange',
+                borderWidth: 1,
+                data: percentilData['1 SD'],
+                tension: 0.2,
+                fill: false,
+                pointRadius: 0 // Eliminar puntos
+            },
+            {
+                label: '2 SD',
+                borderColor: 'red',
+                borderWidth: 1,
+                data: percentilData['2 SD'],
+                tension: 0.2,
+                fill: false,
+                pointRadius: 0 // Eliminar puntos
+            },
+            {
+                label: '3 SD',
+                borderColor: 'black',
+                borderWidth: 1,
+                data: percentilData['3 SD'],
+                tension: 0.2,
+                fill: false,
+                pointRadius: 0 // Eliminar puntos
+            },
+            {
+                label: 'IMC',
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                data: Percentiles.obesidad,
-                yAxisID: 'yPeso'
+                data: percentilData['IMC'],
+                borderWidth: 2,
+                fill: true,
+                pointRadius: 0 // Eliminar puntos
             }
         ]
     };
@@ -111,25 +166,24 @@ function actualizarGrafica(peso, talla, hemoglobina, imc) {
                 title: {
                     display: true,
                     text: 'Edad (Meses)'
-                }
-            },
-            yPeso: {
-                type: 'linear',
-                position: 'left',
-                title: {
-                    display: true,
-                    text: 'Peso (kg)'
-                }
-            },
-            yHemoglobina: {
-                type: 'linear',
-                position: 'right',
-                title: {
-                    display: true,
-                    text: 'Hemoglobina (g/dL)'
                 },
-                grid: {
-                    drawOnChartArea: false
+                max: 30,
+                min: -30,
+               
+                ticks: {
+                    stepSize: 1
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Percentil'
+                },
+                max: 3,
+                min: -3,
+              
+                ticks: {
+                    stepSize: 1
                 }
             }
         }
